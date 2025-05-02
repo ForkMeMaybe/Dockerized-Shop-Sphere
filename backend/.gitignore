@@ -1,0 +1,8 @@
+Shop_Sphere/settings/devvv.py
+*.pyc
+/media/
+/static/
+general.log
+mypy.ini
+core/templates/core/register.html
+core/templates/core/verify_otp.html
