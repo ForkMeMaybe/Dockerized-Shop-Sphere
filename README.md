@@ -29,8 +29,8 @@ You can run the application in **two ways**:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/ForkMeMaybe/Dockerized-Shop-Sphere-App.git
-    cd Dockerized-Shop-Sphere-App
+    git clone https://github.com/ForkMeMaybe/Dockerized-Shop-Sphere.git
+    cd Dockerized-Shop-Sphere
     ```
 
 2. Start all services using prebuilt Docker Hub images:
@@ -48,18 +48,11 @@ You can run the application in **two ways**:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/ForkMeMaybe/Dockerized-Shop-Sphere-App.git
-    cd Dockerized-Shop-Sphere-App
+    git clone https://github.com/ForkMeMaybe/Dockerized-Shop-Sphere.git
+    cd Dockerized-Shop-Sphere
     ```
 
-2. Rename the environment config file:
-
-    ```bash
-    cd backend/Shop_Sphere/settings/
-    mv devv.py dev.py
-    ```
-
-3. Open `dev.py` and fill in the following placeholders with your environment variables:
+2. Open `dev.py` and fill in the following placeholders with your environment variables:
 
     ```python
     DEFAULT_FROM_EMAIL = "<your-email@example.com>"
@@ -71,7 +64,17 @@ You can run the application in **two ways**:
     SECRET_KEY = "<copy this from common.py>"
     ```
 
-4. Return to the root of the project and build everything:
+    Additionally, **optional**: Configure your **database settings** if needed.
+
+4. **Important for production**: In `backend/core/views.py`, remove `@csrf_exempt` before deploying to production.
+
+5. If you cloned the project on **Windows**, you'll need to change the line endings in all scripts (like `backend/docker-entrypoint.sh` and `backend/wait-for-it.sh`) from CRLF to LF. You can do this using the following command in Git or use VS-Code and look on bottom right:
+
+    ```bash
+    git config --global core.autocrlf input
+    ```
+
+6. Return to the root of the project and build everything:
 
     ```bash
     docker-compose up --build
@@ -91,20 +94,6 @@ You can run the application in **two ways**:
 | celery-beat  | Scheduled tasks                    | —        |
 | flower       | Celery monitoring dashboard        | `5555`   |
 | tests        | Auto test runner using `ptw`       | —        |
-
----
-
-## 🔑 Environment Variables
-
-To keep things clean, this project uses a `dev.py` config for local development. You must configure:
-
-- `DEFAULT_FROM_EMAIL`
-- `EMAIL_HOST`
-- `EMAIL_HOST_USER`
-- `EMAIL_HOST_PASSWORD`
-- `RAZOR_KEY_ID`
-- `RAZOR_KEY_SECRET`
-- `SECRET_KEY` *(copy it from `common.py`)*
 
 ---
 
