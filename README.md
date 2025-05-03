@@ -66,6 +66,8 @@ You can run the application in **two ways**:
 
     Additionally, **optional**: Configure your **database settings** if needed.
 
+3. Add `.env` to the frontend `fontend/` folder and set `VITE_API_URL=http://localhost:8000`.
+
 4. **Important for production**: In `backend/core/views.py`, remove `@csrf_exempt` before deploying to production.
 
 5. If you cloned the project on **Windows**, you'll need to change the line endings in all scripts (like `backend/docker-entrypoint.sh` and `backend/wait-for-it.sh`) from CRLF to LF. You can do this using the following command in Git or use VS-Code and look on bottom right:
